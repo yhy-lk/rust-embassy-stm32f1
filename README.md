@@ -1,6 +1,6 @@
 # Rust Embassy STM32F1 嵌入式项目集
 
-![STM32F103 Blue Pill](bluepill.jpg) *STM32F103C8T6 开发板*
+![STM32F103 Blue Pill](pictures/bluepill.jpg) *STM32F103C8T6 开发板*
 
 ## 概述
 
@@ -11,7 +11,7 @@
 | 项目名称 | 简介 | 效果图 | 运行命令 |
 |----------|------|--------|----------|
 | **万年历系统** | 实现完整的日历/时钟系统，支持日期显示和时间调整 | ![Calendar Demo](pictures/calendar_demo.jpg) | `cargo run --bin calendar --release` |
-| **姿态解算系统** | 使用 MPU6050 传感器实现姿态检测和欧拉角显示 | ![IMU Demo](imu_demo.jpg) | `cargo run --bin imu --release` |
+| **姿态解算系统** | 使用 MPU6050 传感器实现姿态检测和欧拉角显示 | ![IMU Demo](pictures/imu_demo.jpg) | `cargo run --bin imu --release` |
 
 ## 开发环境
 
@@ -66,7 +66,6 @@ rust-embassy-stm32f1/
 - [Rust 嵌入式编程指南](https://docs.rust-embedded.org/book/)
 - [Embassy 框架文档](https://embassy.dev/book/)
 - [STM32F1 参考手册](https://www.st.com/resource/en/reference_manual/cd00171190-stm32f101xx-stm32f102xx-stm32f103xx-stm32f105xx-and-stm32f107xx-advanced-arm-based-32-bit-mcus-stmicroelectronics.pdf)
-- [嵌入式 Rust 社区](https://matrix.to/#/#rust-embedded:matrix.org)
 
 ## 许可证
 
