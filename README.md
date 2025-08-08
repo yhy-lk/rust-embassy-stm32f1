@@ -26,7 +26,7 @@
 
 1. 克隆仓库：
    ```bash
-   git clone https://github.com/yourusername/rust-embassy-stm32f1.git
+   git clone https://github.com/yhy-lk/rust-embassy-stm32f1.git
    cd rust-embassy-stm32f1
    ```
 2. 选择并运行项目：
