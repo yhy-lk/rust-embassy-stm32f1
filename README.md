@@ -4,7 +4,7 @@
 
 ## 概述
 
-本项目集使用 Rust 的 Embassy 框架在 STM32F103 Blue Pill 开发板上实现多种嵌入式应用，展示了 Rust 在嵌入式系统开发中的强大能力。
+本项目集使用 Rust 的 Embassy 框架在 STM32F103 Blue Pill 开发板上实现多种嵌入式应用。
 
 ## 项目列表
 
