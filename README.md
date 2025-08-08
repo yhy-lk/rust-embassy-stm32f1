@@ -1,95 +1,73 @@
-<<<<<<< HEAD
-# rust-embassy
-存放一些embassy项目
-=======
-# STM32F103 Blue Pill RTC Calendar with OLED Display
+# Rust Embassy STM32F1 嵌入式项目集
 
-![Demo Image](demo.jpg) *示例效果图*
+![STM32F103 Blue Pill](bluepill.jpg) *STM32F103C8T6 开发板*
 
-## 项目简介
+## 概述
 
-本项目使用Rust的Embassy框架在STM32F103 Blue Pill开发板上实现了一个万年历系统，复现了B站UP主keysking的万年历项目。
+本项目集使用 Rust 的 Embassy 框架在 STM32F103 Blue Pill 开发板上实现多种嵌入式应用，展示了 Rust 在嵌入式系统开发中的强大能力。
 
-**相关视频链接：**
-- [keysking原项目视频](https://www.bilibili.com/video/BV1VkwqeoErY)
-- [本项目效果展示](https://www.bilibili.com/video/BV1vdg8zXEen/)
+## 项目列表
 
-## 硬件要求
+| 项目名称 | 简介 | 效果图 | 运行命令 |
+|----------|------|--------|----------|
+| **万年历系统** | 实现完整的日历/时钟系统，支持日期显示和时间调整 | ![Calendar Demo](calendar_demo.jpg) | `cargo run --bin calendar --release` |
+| **姿态解算系统** | 使用 MPU6050 传感器实现姿态检测和欧拉角显示 | ![IMU Demo](imu_demo.jpg) | `cargo run --bin imu --release` |
 
-### 必需硬件
-- STM32F103C8T6 Blue Pill开发板
-- SSD1306 OLED显示屏 (128×64)
-- 旋转编码器
-- 按键开关
-- ST-LINK调试器
+## 开发环境
 
-### 可选硬件
-- keysking的开发板（可直接使用）
-
-## 开发环境准备
-
-### 先决条件
-1. **STM32开发经验**：需要有STM32单片机C语言开发基础
-2. **Rust编程基础**：需要掌握Rust基本语法
-
-### 学习资源
-- [Rust官方教程](https://doc.rust-lang.org/book/title-page.html)
-- [B站Rust视频教程](https://www.bilibili.com/video/BV1m1sreSEoh)
-- [嵌入式Rust书籍](https://doc.rust-lang.org/stable/embedded-book/intro/index.html)
-- [Embassy框架教程](https://embassy.dev/book/#_introduction)
-- [Embassy STM32 API文档](https://docs.rs/embassy-stm32/latest/embassy_stm32/index.html)
+### 硬件要求
+- STM32F103C8T6 Blue Pill 开发板
+- ST-LINK 调试器
+- 项目特定外设：
+  - 万年历：SSD1306 OLED + 旋转编码器
+  - 姿态解算：MPU6050 传感器
 
 ## 快速开始
 
-### 1. 硬件连接
-参考`src/calendar.rs`文件顶部的接线说明进行硬件连接。
-
-### 2. 编译运行
-```bash
-cargo run --bin calendar --release
-```
-
-## 模块测试
-
-`examples`目录下包含所有子模块的独立测试代码：
-
-| 模块 | 文件 | 运行命令 |
-|------|------|----------|
-| LED控制 | `blinky.rs` | `cargo run --bin blinky --release` |
-| 按键检测 | `exti.rs` | `cargo run --bin exti --release` |
-| OLED显示 | `text_i2c.rs` | `cargo run --bin text_i2c --release` |
-| 编码器 | `qei.rs` | `cargo run --bin qei --release` |
-| 软件RTC | `rtc.rs` | `cargo run --bin rtc --release` |
-
-**测试步骤：**
-1. 将对应示例文件从`examples`复制到`src/bin`目录
-2. 执行相应的运行命令
-
-## 技术说明
-
-1. **RTC实现**：由于STM32F1系列RTC功能不完善，本项目采用软件实现的RTC
-2. **Embassy框架**：使用异步任务处理多任务需求
-3. **硬件抽象**：充分利用Rust的类型系统保证硬件访问安全
-
-## 常见问题
-
-1. **编译错误**：确保已安装正确的工具链和依赖
+1. 克隆仓库：
    ```bash
-   rustup target add thumbv7em-none-eabihf
+   git clone https://github.com/yourusername/rust-embassy-stm32f1.git
+   cd rust-embassy-stm32f1
+   ```
+2. 选择并运行项目：
+   ```bash
+   # 运行万年历项目
+   cargo run --bin calendar --release
+   
+   # 运行姿态解算项目
+   cargo run --bin imu --release
    ```
 
-2. **下载失败**：检查ST-LINK连接和驱动安装
+## 项目架构
 
-3. **显示异常**：确认OLED显示屏的I2C地址和接线
+```
+rust-embassy-stm32f1/
+├── src/
+│   ├── bin/                # 可执行项目入口
+│   │   ├── calendar.rs     # 万年历主程序
+│   │   ├── imu.rs          # 姿态解算主程序
+│   │   └── ...             # 其他项目入口
+│   │
+│   ├── hardware/           # 硬件抽象层
+│   │   ├── gpio_led.rs     # LED 显示驱动
+│   │   ├── mpu6050_madgwick_solver.rs      # MPU6050 传感器驱动
+│   │   └── ...             # 其他硬件驱动
+│   │
+│   └── lib.rs              # 公共模块和库
+│
+├── examples/               # 示例和测试代码
+├── dependencies/           # 依赖库
+├── Cargo.toml              # 项目依赖管理
+└── ...                     # 其他文件（夹）
+```
 
-## 贡献指南
+## 学习资源
 
-欢迎提交Pull Request或Issue报告问题。贡献前请确保：
-- 代码通过rustfmt格式化
-- 所有测试用例通过
-- 更新相关文档
+- [Rust 嵌入式编程指南](https://docs.rust-embedded.org/book/)
+- [Embassy 框架文档](https://embassy.dev/book/)
+- [STM32F1 参考手册](https://www.st.com/resource/en/reference_manual/cd00171190-stm32f101xx-stm32f102xx-stm32f103xx-stm32f105xx-and-stm32f107xx-advanced-arm-based-32-bit-mcus-stmicroelectronics.pdf)
+- [嵌入式 Rust 社区](https://matrix.to/#/#rust-embedded:matrix.org)
 
 ## 许可证
 
-MIT License
->>>>>>> master
+MIT 许可证 - 详见 [LICENSE](LICENSE) 文件
