@@ -1,0 +1,22 @@
+{
+    "configurations": [
+    {
+        "type": "probe-rs-debug",
+        "request": "launch",
+        "name": "probe-rs Test",
+        "cwd": "",
+        "connectUnderReset": false,
+        "chip": "STM32F103C8",
+        "flashingConfig": {
+            "flashingEnabled": true,
+            "haltAfterReset": true
+        },
+        "coreConfigs": [
+            {
+                "coreIndex": 0,
+                "programBinary": "./target/thumbv7m-none-eabi/debug/main"
+            }
+        ]
+    }
+    ]
+}

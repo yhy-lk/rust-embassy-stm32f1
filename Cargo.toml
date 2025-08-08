@@ -1,0 +1,44 @@
+[package]
+name = "main_cargo"
+version = "0.1.0"
+edition = "2024"
+
+
+[dependencies]
+embassy-stm32 = { version = "0.2.0", features = [ "defmt", "stm32f103c8", "unstable-pac", "memory-x", "time-driver-any", "exti", "chrono" ] }
+embassy-sync = { version = "0.7.0", features = ["defmt"] }
+embassy-executor = { version = "0.7.0", features = ["arch-cortex-m", "executor-thread", "defmt"] }
+embassy-time = { version = "0.4.0", features = ["defmt", "defmt-timestamp-uptime", "tick-hz-32_768"] }
+embassy-usb = { version = "0.5.0", features = ["defmt"] }
+embassy-futures = { version = "0.1.0" }
+embedded-hal-async = { version = "1.0.0", optional = true }
+
+defmt = "1.0.1"
+defmt-rtt = "1.0.0"
+
+cortex-m = { version = "0.7.6", features = ["inline-asm", "critical-section-single-core"] }
+cortex-m-rt = "0.7.0"
+embedded-hal = "1.0.0"
+panic-probe = { version = "1.0.0", features = ["print-defmt"] }
+heapless = { version = "0.8", default-features = false }
+nb = "1.1.0"
+static_cell = "2.0.0"
+
+ssd1306 = { version = "0.10.0" }
+embedded-graphics = "0.8.0"
+chrono = { version = "^0.4", default-features = false }
+
+mpu6050 = { version = "0.1.6", path = "./dependencies/mpu6050" }
+ahrs = { version = "0.7.0", path = "./dependencies/ahrs-rs", default-features = false }
+nalgebra = { version = "0.34.0", default-features = false }
+num-traits = { version = "0.2.19", default-features = false }
+
+[profile.dev]
+opt-level = "s"
+
+[profile.release]
+debug = 2
+
+[features]
+default = ["async"]
+async = ["dep:embedded-hal-async"]
