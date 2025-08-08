@@ -10,7 +10,7 @@
 
 | 项目名称 | 简介 | 效果图 | 运行命令 |
 |----------|------|--------|----------|
-| **万年历系统** | 实现完整的日历/时钟系统，支持日期显示和时间调整 | ![Calendar Demo](calendar_demo.jpg) | `cargo run --bin calendar --release` |
+| **万年历系统** | 实现完整的日历/时钟系统，支持日期显示和时间调整 | ![Calendar Demo](pictures/calendar_demo.jpg) | `cargo run --bin calendar --release` |
 | **姿态解算系统** | 使用 MPU6050 传感器实现姿态检测和欧拉角显示 | ![IMU Demo](imu_demo.jpg) | `cargo run --bin imu --release` |
 
 ## 开发环境
