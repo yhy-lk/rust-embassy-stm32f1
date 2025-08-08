@@ -1,6 +1,6 @@
 # Rust Embassy STM32F1 嵌入式项目集
 
-![STM32F103 Blue Pill](pictures/bluepill.png) *STM32F103C8T6 最小系统板*
+![STM32F103 Blue Pill](pictures/bluepil.png) *STM32F103C8T6 最小系统板*
 
 ## 概述
 
