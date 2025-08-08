@@ -217,15 +217,15 @@ async fn oled_display(
             let text_roll = format_euler(String::from_str("roll ").unwrap(), euler_angles.roll);
             let text_pitch = format_euler(String::from_str("pitch").unwrap(), euler_angles.pitch);
 
-            Text::with_baseline(&text_yaw, Point::new(0, 1), text_style, Baseline::Top)
+            Text::with_baseline(&text_yaw, Point::new(-1, 1), text_style, Baseline::Top)
                 .draw(&mut display)
                 .unwrap();
 
-            Text::with_baseline(&text_roll, Point::new(0, 22), text_style, Baseline::Top)
+            Text::with_baseline(&text_roll, Point::new(-1, 22), text_style, Baseline::Top)
                 .draw(&mut display)
                 .unwrap();
 
-            Text::with_baseline(&text_pitch, Point::new(0, 43), text_style, Baseline::Top)
+            Text::with_baseline(&text_pitch, Point::new(-1, 43), text_style, Baseline::Top)
                 .draw(&mut display)
                 .unwrap();
 
